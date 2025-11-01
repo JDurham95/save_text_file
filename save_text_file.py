@@ -6,21 +6,25 @@ import os
 
 def save_text_file(file):
     """
-    The user will pass a text file. The first line of the file indicates either append ("a") or write ("w").
-    The second line of the file is the text to be saved. The third line of the file is the name to be saved
+    The user will pass a text file. The first line of the file indicates either append ("a"), write ("w") or read ("r").
+    The second line of the file is the name to be saved. The third line of the file is the text to be saved.
     """
 
     #open the file, get the individual lines as the content array. clear the contents of the passed in file.
-    with open(file, "r") as f:
-        content = f.readlines()
-    open(file, "w").close()
+    try:
+        with open(file, "r") as f:
+            content = f.readlines()
+        open(file, "w").close()
+    except FileNotFoundError:
+        print("File not found")
+        return
 
-    #the first line is action to be taken, either append or write
+    #the first line is action to be taken, either append, write, or read
     action = content[0]
 
-    #the third line is the name of the file
-    if content[2]:
-        name = content[2]
+    #the second line is the name of the file
+    if content[1]:
+        name = content[1]
 
         #append ".txt" if needed
         if name[-4:] != ".txt":
@@ -28,7 +32,7 @@ def save_text_file(file):
     else:
         name = "temp.txt"
 
-    #if the action is "r", check if the file exists, the open it and copy the contents into the passed in file.
+    #if the action is "r", check if the file exists, then open it and copy the contents into the passed in file.
     if action == "r":
         try:
             text = None
@@ -39,15 +43,16 @@ def save_text_file(file):
             print(f"Text from file {name} saved to {file}")
         except FileNotFoundError:
             print("File not found")
+            return
 
 
     #append if the action is "a" and the name already exists, otherwise write
     if action == "a" and os.path.exists(name):
         with open(name, "a", encoding="utf-8") as f:
-            f.write(content[1])
+            f.write(content[2])
             print(f"File {name} appended")
     else:
         with open(name, "w", encoding="utf-8") as f:
-            f.write(content[1])
+            f.write(content[2])
             print(f"File {name} written")
 
