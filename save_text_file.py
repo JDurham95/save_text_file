@@ -28,11 +28,26 @@ def save_text_file(file):
     else:
         name = "temp.txt"
 
+    #if the action is "r", check if the file exists, the open it and copy the contents into the passed in file.
+    if action == "r":
+        try:
+            text = None
+            with open(name, "r") as f:
+                text = f.read()
+            with open(file, "w") as f:
+                f.write(text)
+            print(f"Text from file {name} saved to {file}")
+        except FileNotFoundError:
+            print("File not found")
+
+
     #append if the action is "a" and the name already exists, otherwise write
     if action == "a" and os.path.exists(name):
         with open(name, "a", encoding="utf-8") as f:
             f.write(content[1])
+            print(f"File {name} appended")
     else:
         with open(name, "w", encoding="utf-8") as f:
             f.write(content[1])
+            print(f"File {name} written")
 
