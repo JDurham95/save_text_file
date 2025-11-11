@@ -19,12 +19,20 @@ def save_text_file(file):
         print("File not found")
         return
 
+    cleansed_content = []
+
+    #remove the new line characters from content, append the clean lines into cleansed_content
+    for line in content:
+        clean_line = line.replace( "\n", "")
+        cleansed_content.append(clean_line)
+
+
     #the first line is action to be taken, either append, write, or read
-    action = content[0]
+    action = cleansed_content[0]
 
     #the second line is the name of the file
     if content[1]:
-        name = content[1]
+        name = cleansed_content[1]
 
         #append ".txt" if needed
         if name[-4:] != ".txt":
@@ -41,6 +49,7 @@ def save_text_file(file):
             with open(file, "w") as f:
                 f.write(text)
             print(f"Text from file {name} saved to {file}")
+            return
         except FileNotFoundError:
             print("File not found")
             return
@@ -49,10 +58,17 @@ def save_text_file(file):
     #append if the action is "a" and the name already exists, otherwise write
     if action == "a" and os.path.exists(name):
         with open(name, "a", encoding="utf-8") as f:
-            f.write(content[2])
+            f.write(cleansed_content[2])
             print(f"File {name} appended")
     else:
         with open(name, "w", encoding="utf-8") as f:
-            f.write(content[2])
+            f.write(cleansed_content[2])
             print(f"File {name} written")
 
+def main():
+    service_file = "file-service.txt"
+    save_text_file(service_file)
+
+
+if __name__ == "__main__":
+    main()
