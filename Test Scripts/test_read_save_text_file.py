@@ -3,10 +3,10 @@ import time
 
 def test_read():
     """Test method for the read action of the save_text_file microservice"""
-    service_file = "file-service.txt"
+    service_file = "../Text Files/file-service.txt"
 
     action = "r"
-    file_to_read = "test_read.txt"
+    file_to_read = "../Text Files/test_read.txt"
 
     with open(service_file, "w") as f:
         f.write(action + "\n" + file_to_read)

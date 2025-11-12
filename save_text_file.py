@@ -66,7 +66,7 @@ def save_text_file(file):
             print(f"File {name} written")
 
 def main():
-    service_file = "file-service.txt"
+    service_file = "Text Files/file-service.txt"
     save_text_file(service_file)
 
 

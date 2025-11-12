@@ -2,7 +2,7 @@
 
 def test_save():
     """Test function for the write action of the save_text_file microservice"""
-    service_file = "file-service.txt"
+    service_file = "../Text Files/file-service.txt"
 
     action = "w"
     saved_file_name = "test_save.txt"
