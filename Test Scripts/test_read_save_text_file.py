@@ -6,13 +6,12 @@ def test_read():
     service_file = "../Text Files/file-service.txt"
 
     action = "r"
-    file_to_read = "../Text Files/test_read.txt"
+    file_to_read = "./Text Files/test_read.txt"
 
     with open(service_file, "w") as f:
         f.write(action + "\n" + file_to_read)
 
-
-    time.sleep(10)
+    time.sleep(5)
 
     with open(service_file, "r") as f:
         content = f.readlines()

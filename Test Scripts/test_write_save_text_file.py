@@ -5,8 +5,8 @@ def test_save():
     service_file = "../Text Files/file-service.txt"
 
     action = "w"
-    saved_file_name = "test_save.txt"
-    saved_file_text = "Input text to save in test_save.txt here"
+    saved_file_name = "Text Files/test_write.txt"
+    saved_file_text = "Input text to save in test_write.txt here"
 
     with open(service_file, "w") as f:
         f.write(action + "\n" + saved_file_name + "\n" + saved_file_text)
