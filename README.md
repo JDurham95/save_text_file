@@ -114,8 +114,8 @@ anything to the requesting program.
 
 #### Example write action request from the microservice 
 ```doctest
-    import time 
-        service_file = "../Text Files/file-service.txt"
+
+    service_file = "../Text Files/file-service.txt"
 
     action = "w"
     saved_file_name = "test_save.txt"
@@ -125,4 +125,30 @@ anything to the requesting program.
         f.write(action + "\n" + saved_file_name + "\n" + saved_file_text)
 ```
 
+### Receiving the read contents from the read request 
+The requesting program will wait at least one second after the request was made so that the microservice has time to
+open the file of the given name and copy its contents into *file-service.txt*. The requesting program will be able to 
+access the received data by reading from  *file-service.txt* which is located in the "Text Files" directory.
+
+
+#### Example of receiving the data obtained by the read action in Python 
+
+```doctest
+    import time
+    
+    service_file = "../Text Files/file-service.txt"
+    
+    action = "r"
+    file_to_read = "../Text Files/test_read.txt"
+
+    with open(service_file, "w") as f:
+        f.write(action + "\n" + file_to_read)
+
+    time.sleep(10)
+
+    with open(service_file, "r") as f:
+        content = f.readlines()
+
+    print(content)
+```
 
