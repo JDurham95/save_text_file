@@ -12,7 +12,9 @@ available for the user.
 
 ## UML Sequence Diagrams 
 ![MS2 UML Read Diagram.png](UML%20Diagrams/MS2%20UML%20Read%20Diagram.png)
+
 ![MS2 UML Append Diagram.png](UML%20Diagrams/MS2%20UML%20Append%20Diagram.png)
+
 ![MS2 UML Write Diagram.png](UML%20Diagrams/MS2%20UML%20Write%20Diagram.png)
 
 ## Communication Contract
