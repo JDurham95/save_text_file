@@ -6,7 +6,7 @@ def test_append():
 
     action = "a"
     file_to_append = "Text Files/test_append.txt"
-    text_to_append = "enter text to append here "
+    text_to_append = " enter text to append here "
 
     with open(service_file, "w") as f:
         f.write(action + "\n" + file_to_append + "\n" + text_to_append)

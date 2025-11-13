@@ -1,6 +1,6 @@
 
 
-def test_save():
+def test_write_action():
     """Test function for the write action of the save_text_file microservice"""
     service_file = "../Text Files/file-service.txt"
 
@@ -12,6 +12,6 @@ def test_save():
         f.write(action + "\n" + saved_file_name + "\n" + saved_file_text)
 
 def main():
-    test_save()
+    test_write_action()
 if __name__ == "__main__":
     main()

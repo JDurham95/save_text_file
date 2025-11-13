@@ -78,7 +78,7 @@ def main():
         content = get_content(service_file)
 
         if content and content != last_content:
-
+            time.sleep(5)
             open(service_file, "w").close()
             # remove the new line characters from content, append the clean lines into cleansed_content
             content = cleanse_content(content)

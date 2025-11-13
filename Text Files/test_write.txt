@@ -1,1 +1,0 @@
-Input text to save in test_write.txt here
