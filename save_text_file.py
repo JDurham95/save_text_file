@@ -68,6 +68,27 @@ def get_content(file_name):
         print(f"File {file_name} not found, please check the file name")
         return content
 
+def parse_action_name(content):
+    """Parses out the action and name from the content of the service file"""
+    
+    # remove the new line characters from content, append the clean lines into cleansed_content
+    content = cleanse_content(content)
+
+    # the first line is action to be taken, either append, write, or read
+    action = content[0]
+
+    # the second line is the name of the file
+    if content[1]:
+        name = content[1]
+
+        # append ".txt" if needed
+        if name[-4:] != ".txt":
+            name = name + ".txt"
+    else:
+        name = "temp.txt"
+    
+    return action, name
+
 def main():
     service_file = "Text Files/file-service.txt"
 
@@ -79,22 +100,8 @@ def main():
 
         if content and content != last_content:
             time.sleep(5)
-            open(service_file, "w").close()
-            # remove the new line characters from content, append the clean lines into cleansed_content
-            content = cleanse_content(content)
-
-            # the first line is action to be taken, either append, write, or read
-            action = content[0]
-
-            # the second line is the name of the file
-            if content[1]:
-                name = content[1]
-
-                # append ".txt" if needed
-                if name[-4:] != ".txt":
-                    name = name + ".txt"
-            else:
-                name = "temp.txt"
+            action, name = parse_action_name(content)
+            open(service_file , "w").close()
 
             # if the action is "r", check if the file exists, then open it and copy the contents into the passed in file.
             if action == "r":
