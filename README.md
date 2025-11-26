@@ -159,3 +159,50 @@ access the received data by reading from  *file-service.txt* which is located in
     print(content)
 ```
 
+### Example of call and return value for using the write action
+
+Here is an example call of the user using the microservice write action to create a new file with the name
+*synth-params.txt* and the following dictionary as text to save in that file. 
+{"osc" : "sine", "amp": "100", "freq" : "432"}
+
+![write example 1.png](Example%20Pictures/write%20example%201.png)
+
+The above code will write the following lines to the *file-service.txt*
+
+![write example 4.png](Example%20Pictures/write%20example%204.png)
+
+The microservice will create the following text file in the Text Files directory
+
+![write example 3.png](Example%20Pictures/write%20example%203.png)
+
+### Example call and return value for using the read action 
+
+Here is an example call of the user using microservice read action to read from the *synth_params.txt* that was created
+in the above write action example call. 
+
+![read example 2.png](Example%20Pictures/read%20example%202.png)
+
+The above code will write the following to the *file-service.txt*
+
+![read example 3.png](Example%20Pictures/read%20example%203.png)
+
+The microservice will read from *synth_params.txt* and write the contents into *file-service.txt*. The example call 
+will print the contents as shown below. 
+
+![read example 1.png](Example%20Pictures/read%20example%201.png)
+
+
+### Example of call and return value for the using the append action
+
+Here is an example call of the user using the microservice append action to append to the *synth_params.txt*. 
+
+![append example 1.png](Example%20Pictures/append%20example%201.png)
+
+The above code will write the following to the *file-service.txt*.
+
+![append example 2.png](Example%20Pictures/append%20example%202.png)
+
+The microservice will read the file name and the text to append. The text will be appended to to *synth_params.txt* as
+shown below.  
+
+![append example 3.png](Example%20Pictures/append%20example%203.png)
